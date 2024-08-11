@@ -1,0 +1,22 @@
+services:
+   Loki:
+    image: ${LOKI_IMAGE_NAME}
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ${LOKI_CONTAINER_NAME}
+    hostname: ${LOKI_HOSTNAME}
+    environment:
+      TZ: ${SYSTEM_TIME_ZONE}
+    restart: unless-stopped
+    volumes:
+      - ./:/etc/loki
+      - ${APP_DATA_PATH}:/loki
+    ports:
+      - "${LOKI_EXTERNAL_PORT}:3100"
+    healthcheck:
+      test: curl -s http://localhost:3100/ready | grep -q -w ready
+      start_period: 2s
+      interval: 2s
+      timeout: 1s
+      retries: 10
