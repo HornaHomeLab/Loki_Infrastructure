@@ -1,4 +1,5 @@
 # Loki_Infrastructure
+##### version: 0.0.1
 
 ## Setup Docker logs
 
