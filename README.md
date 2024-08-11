@@ -15,7 +15,7 @@ docker plugin install grafana/loki-docker-driver:2.9.2 --alias loki --grant-all-
     "log-level": "debug",
     "log-driver": "loki",
     "log-opts": {
-        "loki-url": "http://codespace.horna.local:3100/loki/api/v1/push",
+        "loki-url": "http://services.horna.local:3100/loki/api/v1/push",
         "loki-batch-size": "400"
     }
 }
